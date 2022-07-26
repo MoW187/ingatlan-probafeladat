@@ -12,11 +12,6 @@ const routes = [
     path: '/reszletek/:id',
     name: 'Details',
     component: Details
-  },
-  {
-    path: '/kedvencek',
-    name: 'List',
-    component: List
   }
 ]
 
