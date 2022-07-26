@@ -1,16 +1,20 @@
 <template>
-  <div class="col-3 d-none d-lg-block section">
-    <NavMenu />
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-3 d-none d-lg-block section">
+        <NavMenu />
+      </div>
 
-  <div class="col-12 col-lg-9">
-    <PageTitle title="Lista" :count="ads.length" />
+      <div class="col-12 col-lg-9">
+        <PageTitle title="Lista" :count="ads.length" />
 
-    <Ad
-        v-for="(item) in ads" :key="item.id"
-        :item="item"
-        class="ad"
-    />
+        <Ad
+            v-for="(item) in ads" :key="item.id"
+            :item="item"
+            class="ad"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -25,8 +29,31 @@ export default {
   components: { NavMenu, PageTitle, Ad },
   data() {
     return {
-      ads: json.ads
+      ads: []
     }
+  },
+  watch:{
+    $route (to) {
+      this.buildAds(to.name);
+    }
+  },
+  methods: {
+    buildAds(routeName) {
+      this.ads = [];
+
+      json.ads.forEach(item => {
+        if(routeName === "Favourites") {
+          if(this.$store.state.favourites.includes(item.adId)) {
+            this.ads.push(item);
+          }
+        } else {
+          this.ads.push(item);
+        }
+      });
+    }
+  },
+  created() {
+    this.buildAds(this.$route.name);
   }
 }
 </script>
