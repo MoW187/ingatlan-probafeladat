@@ -31,12 +31,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .ad {
   margin-bottom: 20px;
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
-  height: 180px;
+  height: auto;
+
+  @media(min-width: 992px) {
+    height: 180px;
+  }
 }
 </style>
