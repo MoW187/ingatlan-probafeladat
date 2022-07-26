@@ -12,7 +12,12 @@ const routes = [
     path: '/reszletek/:id',
     name: 'Details',
     component: Details
-  }
+  },
+  {
+    path: '/kedvencek',
+    name: 'Favourites',
+    component: List
+  },
 ]
 
 const router = createRouter({

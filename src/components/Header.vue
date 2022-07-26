@@ -11,22 +11,18 @@
           aria-label="Toggle navigation"
       />
       <div class="collapse navbar-collapse" id="navContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link to="/">Lista</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/kedvencek">Kedvencek</router-link>
-          </li>
-        </ul>
+        <NavMenu />
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import NavMenu from "@/components/NavMenu";
+
 export default {
-  name: "Header"
+  name: "Header",
+  components: { NavMenu }
 }
 </script>
 
@@ -43,20 +39,6 @@ nav {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-  }
-
-  .navbar-collapse {
-    .navbar-nav {
-      padding: 20px 0;
-
-      .nav-item {
-        padding: 20px 0;
-
-        a {
-          text-decoration: none;
-        }
-      }
-    }
   }
 }
 
